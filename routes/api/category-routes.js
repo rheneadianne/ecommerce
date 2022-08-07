@@ -60,10 +60,7 @@ router.post('/', (req, res) => {
     category_name: req.body.category_name
   })
   .then(data => {
-    data ? res.status(404).json({
-      message: 'Category exists! Please try again'
-    })
-    : res.json(data)
+    res.json(data)
   })
   .catch( error => {
     console.error(error);
@@ -73,7 +70,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update({
+  Category.update(req.body, {
     where: {
       id: req.params.id
     }
