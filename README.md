@@ -54,8 +54,7 @@ No need to contact for pull and fork requests! Go forth!
 ## Tests
 Go to https://localhost:3001 in your browser or ThunderClient or Insomnia after running your server and check if your api routes are running correctly!
 
-## Screenshot
-![Gif demo of application](./public/assets/images/readMeGif.gif)
+## Video
 
 ## GitHub and Contact
 GitHub: [github.com/rheneadianne](https://github.com/rheneadianne)
