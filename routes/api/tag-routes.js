@@ -54,7 +54,11 @@ router.post('/', (req, res) => {
     tag_name: req.body.tag_name
   })
   .then(data => {
-    res.json(data)
+    data ? res.json({
+      message: 'Tag added successfully!'
+    }) : res.json({
+      message: "Body cannot be left blank!"
+    })
   })
   .catch( error => {
     console.error(error);
@@ -73,7 +77,9 @@ router.put('/:id', (req, res) => {
     !data ? res.status(404).json({
       message: 'No tag found with that id! Please try again.'
     })
-    : res.json(data)
+    : res.json({
+      message: 'Tag updated successfully!'
+    })
   })
   .catch( error => {
     console.error(error);
@@ -92,7 +98,9 @@ router.delete('/:id', (req, res) => {
     !data ? res.status(404).json({
       message: 'No tag found with that id! Please try again.'
     })
-    : res.json(data)
+    : res.json({
+      message: 'Tag deleted successfully!'
+    })
   })
   .catch( error => {
     console.error(error);

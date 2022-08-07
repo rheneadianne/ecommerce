@@ -54,7 +54,11 @@ router.post('/', (req, res) => {
     category_name: req.body.category_name
   })
   .then(data => {
-    res.json(data)
+    data ? res.json({
+      message: 'Category added successfully!'
+    }) : res.json({
+      message: "Body cannot be left blank!"
+    })
   })
   .catch( error => {
     console.error(error);
@@ -73,7 +77,9 @@ router.put('/:id', (req, res) => {
     !data ? res.status(404).json({
       message: 'No categories found with that id! Please try again.'
     })
-    : res.json(data)
+    : res.json({
+      message: 'Category updated successfully!'
+    }) 
   })
   .catch( error => {
     console.error(error);
@@ -92,7 +98,9 @@ router.delete('/:id', (req, res) => {
     !data ? res.status(404).json({
       message: 'No categories found with that id! Please try again.'
     })
-    : res.json(data)
+    : res.json({
+      message: 'Category deleted successfully!'
+    })
   })
   .catch( error => {
     console.error(error);
