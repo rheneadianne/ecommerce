@@ -10,11 +10,6 @@ class Product extends Model {}
 Product.init(
   {
     // define columns
-    // id primary key
-    // product_name: 'Plain T-Shirt',
-    // price: 14.99, //validate if decimal
-    // stock: 14,
-    // category_id: 1,
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
