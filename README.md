@@ -1,1 +1,65 @@
-# E-commerce Back End Starter Code
+
+# E-Commerce Backend
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+    
+## Table of Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributions](#contributions)
+- [Contributing](#contributing)
+- [Tests](#tests)
+
+
+## Description
+Server based database for an ecommerce store using Sequelize and Express.js.
+
+## Installation
+Clone, download, or fork repo and follow steps below!
+
+### Step 1: Install NPM Packages
+```
+npm i
+```
+
+### Step 2: Edit your .env
+
+In the folders you'll find a .env.EXAMPLE file with the following:
+```
+DB_NAME='ecommerce_db'
+DB_PW=''
+DB_USER=''
+```
+Update DB_USER with your MySQL username and DB_PW with your MySQL password then save as .env (NOT .env.EXAMPLE)
+### Step 3: Access MySQL to create database
+```
+mysql -u root -p
+source db/schema.sql
+```
+### Step 4: Seed
+```
+npm run seed
+```
+
+## Usage 
+Update your ecommerce backend through sequelize! To start type this in your console:
+```
+node server
+```
+
+## Contributing 
+No need to contact for pull and fork requests! Go forth!
+
+## Tests
+Go to https://localhost:3001 in your browser or ThunderClient or Insomnia after running your server and check if your api routes are running correctly!
+
+## Screenshot
+![Gif demo of application](./public/assets/images/readMeGif.gif)
+
+## GitHub and Contact
+GitHub: [github.com/rheneadianne](https://github.com/rheneadianne)
+Email:  [rheneadianne@gmail.com](mailto:rheneadianne@gmail.com)
+
+## Contribution
+Made with ❤️ by rhenea
