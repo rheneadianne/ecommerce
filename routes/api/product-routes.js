@@ -4,15 +4,67 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // The `/api/products` endpoint
 
 // get all products
+
+// Category.findAll({
+//   include: {
+//     model: Product,
+//     attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
+//   }
+
 router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
+  Product.findAll({
+    attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+    include: {
+      model: Category,
+      attributes: ['category_name']
+    },
+    include: {
+      model: Tag,
+      attributes: ['tag_name']
+    }
+  })
+  .then( data => {
+    !data ? res.status(404).json({
+      message: 'No products found! Please try again.'
+    })
+    : res.json(data)
+  })
+  .catch( error => {
+    console.error(error);
+    res.status(500).json(error)
+  })
 });
 
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  Product.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
+    include: {
+      model: Category,
+      attributes: ['category_name']
+    },
+    include: {
+      model: Tag,
+      attributes: ['tag_name']
+    }
+  })
+  .then( data => {
+    !data ? res.status(404).json({
+      message: 'No products found with this id! Please try again.'
+    })
+    : res.json(data)
+  })
+  .catch( error => {
+    console.error(error);
+    res.status(500).json(error)
+  })
 });
 
 // create new product
@@ -91,6 +143,21 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
+  Product.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then( data => {
+    !data ? res.status(404).json({
+      message: 'No products found with that id! Please try again.'
+    })
+    : res.json(data)
+  })
+  .catch( error => {
+    console.error(error);
+    res.status(500).json(error)
+  })
 });
 
 module.exports = router;
